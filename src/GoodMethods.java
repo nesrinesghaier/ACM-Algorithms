@@ -78,4 +78,35 @@ public class GoodMethods {
         }
         return f;
     }
+
+    public static double bisection(double i, double v, int m) {
+        double a = 0.01;
+        double b = (1 + i) * v;
+        double d = (a + b) / 2;
+        double fa = f(a, m, v, i);
+        double fb = f(b, m, v, i);
+        double fd = f(d, m, v, i);
+        int j = 0;
+        while (Math.abs(fd) > 1e-10) {
+            if (fa * fd < 0) {
+                b = d;
+                d = (a + b) / 2;
+                fb = fd;
+                fd = f(d, m, v, i);
+            } else {
+                a = d;
+                d = (a + b) / 2;
+                fa = fd;
+                fd = f(d, m, v, i);
+            }
+        }
+        return d;
+    }
+
+    public static double f(double d, int m, double v, double i) {
+        if (m == 1) {
+            return v * (1.0 + i) - d;
+        }
+        return f(d, m - 1, v * (1.0 + i) - d, i);
+    }
 }
