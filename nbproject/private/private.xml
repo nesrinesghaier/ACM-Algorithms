@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/GoodMethods.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/ClassicalDP/TSP.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/Graphs/DFS.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/ClassicalDP/Max2DRangeSum.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/ClassicalDP/LIS.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/Graphs/BFS.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/Graphs/ArticulationPointsandBridges.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/Graphs/DFSSpanningTree.java</file>
             <file>file:/home/bacali/NetBeansProjects/Algorithms/src/Main.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/ClassicalDP/Max1DRangeSum.java</file>
+            <file>file:/home/bacali/NetBeansProjects/Algorithms/src/Graphs/TopologicalSort.java</file>
         </group>
     </open-files>
 </project-private>
