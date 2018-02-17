@@ -1,13 +1,13 @@
-package ClassicalDP;
+package com.eniso.acm.ClassicalDP;
 
 import java.io.PrintWriter;
 
 public class CoinChange {
 
     public static int n;
-    public static int[] coinValue;
+    private static int[] coinValue;
 
-    public static int solve(int value) {
+    private static int solve(int value) {
         if (value == 0) {
             return 0;
         }
@@ -15,13 +15,13 @@ public class CoinChange {
             return Integer.MAX_VALUE;
         }
         int min = Integer.MAX_VALUE;
-        for (int i = 0; i < coinValue.length; i++) {
-            min = Integer.min(min, solve(value - coinValue[i]));
+        for (int aCoinValue : coinValue) {
+            min = Integer.min(min, solve(value - aCoinValue));
         }
         return 1 + min;
     }
 
-    public static int nbrWays(int i, int value) {
+    private static int nbrWays(int i, int value) {
         if (value == 0) {
             return 1;
         }

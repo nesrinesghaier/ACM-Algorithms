@@ -1,4 +1,4 @@
-package ClassicalDP;
+package com.eniso.acm.ClassicalDP;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
