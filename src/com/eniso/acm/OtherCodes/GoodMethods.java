@@ -1,9 +1,21 @@
-package com.eniso.acm;
+package com.eniso.acm.OtherCodes;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class GoodMethods {
+public class GoodMethods
+
+    public static int upper_bound(int[] tab, int l, int h, long x) {
+        while (l < h) {
+            int mid = (l + h) / 2;
+            if (tab[mid] <= x) {
+                l = mid + 1;
+            } else {
+                h = mid;
+            }
+        }
+        return l;
+    }
 
     public static List<int[]> list = new LinkedList<>();
 

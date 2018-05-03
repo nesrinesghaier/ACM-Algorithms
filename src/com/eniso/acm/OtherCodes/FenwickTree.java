@@ -1,4 +1,4 @@
-package com.eniso.acm;
+package com.eniso.acm.OtherCodes;
 
 import java.io.PrintWriter;
 
