@@ -3,7 +3,7 @@ package com.eniso.acm.OtherCodes;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GoodMethods
+public class GoodMethods {
 
     public static int upper_bound(int[] tab, int l, int h, long x) {
         while (l < h) {
@@ -19,13 +19,6 @@ public class GoodMethods
 
     public static List<int[]> list = new LinkedList<>();
 
-    /**
-     * Permute donne tous les permutations d'un ensemble des entiers,
-     * charactères, etc ...
-     *
-     * @param input
-     * @param startindex
-     */
     public static void Permute(int[] input, int startindex) {
         int size = input.length;
         if (size == startindex + 1) {
@@ -47,49 +40,44 @@ public class GoodMethods
         }
     }
 
-    /**
-     * Méthode de radix sort d'un tableau des entiers
-     *
-     * @param f
-     * @return
-     */
-    public static int[] radixSort(int[] f) {
-        return radixSort(f, f.length);
+    public static int[] radixsort(int[] input) {
+
+        // Largest place for a 32-bit int is the 1 billion's place
+        for (int place = 1; place <= 1000000000; place *= 10) {
+            // Use counting sort at each digit's place
+            input = countingSort(input, place);
+        }
+
+        return input;
     }
 
-    public static int[] radixSort(int[] f, int n) {
-        int[] to = new int[n];
-        {
-            int[] b = new int[65537];
-            for (int i = 0; i < n; i++) {
-                b[1 + (f[i] & 0xffff)]++;
-            }
-            for (int i = 1; i <= 65536; i++) {
-                b[i] += b[i - 1];
-            }
-            for (int i = 0; i < n; i++) {
-                to[b[f[i] & 0xffff]++] = f[i];
-            }
-            int[] d = f;
-            f = to;
-            to = d;
+    private static int[] countingSort(int[] input, int place) {
+        int[] out = new int[input.length];
+
+        int[] count = new int[10];
+
+        for (int i = 0; i < input.length; i++) {
+            int digit = getDigit(input[i], place);
+            count[digit] += 1;
         }
-        {
-            int[] b = new int[65537];
-            for (int i = 0; i < n; i++) {
-                b[1 + (f[i] >>> 16)]++;
-            }
-            for (int i = 1; i <= 65536; i++) {
-                b[i] += b[i - 1];
-            }
-            for (int i = 0; i < n; i++) {
-                to[b[f[i] >>> 16]++] = f[i];
-            }
-            int[] d = f;
-            f = to;
-            to = d;
+
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
         }
-        return f;
+
+        for (int i = input.length - 1; i >= 0; i--) {
+            int digit = getDigit(input[i], place);
+
+            out[count[digit] - 1] = input[i];
+            count[digit]--;
+        }
+
+        return out;
+
+    }
+
+    private static int getDigit(int value, int digitPlace) {
+        return ((value / digitPlace) % 10);
     }
 
     public static double bisection(double i, double v, int m) {
