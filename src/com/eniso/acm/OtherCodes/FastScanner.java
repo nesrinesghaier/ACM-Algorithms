@@ -1,77 +1,50 @@
-package com.eniso.acm.OtherCodes;
 
-import java.util.*;
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class FastScanner {
 
-    private BufferedReader in;
-    private String[] line;
-    private int index;
-    private int size;
+    private BufferedReader br;
+    private StringTokenizer st;
 
-    public FastScanner(InputStream in) throws IOException {
-        this.in = new BufferedReader(new InputStreamReader(in));
-        init();
+    public FastScanner(InputStream stream) {
+        br = new BufferedReader(new InputStreamReader(stream));
     }
 
-    public FastScanner(String file) throws FileNotFoundException {
-        this.in = new BufferedReader(new FileReader(file));
-    }
-
-    private void init() throws IOException {
-        line = in.readLine().split(" ");
-        index = 0;
-        size = line.length;
-    }
-
-    public int nextInt() throws IOException {
-        if (index == size) {
-            init();
+    public String next() {
+        while (st == null || !st.hasMoreElements()) {
+            try {
+                st = new StringTokenizer(br.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        return Integer.parseInt(line[index++]);
+        return st.nextToken();
     }
 
-    public long nextLong() throws IOException {
-        if (index == size) {
-            init();
-        }
-        return Long.parseLong(line[index++]);
+    public int nextInt() {
+        return Integer.parseInt(next());
     }
 
-    public float nextFloat() throws IOException {
-        if (index == size) {
-            init();
-        }
-        return Float.parseFloat(line[index++]);
+    public long nextLong() {
+        return Long.parseLong(next());
     }
 
-    public double nextDouble() throws IOException {
-        if (index == size) {
-            init();
-        }
-        return Double.parseDouble(line[index++]);
+    public double nextDouble() {
+        return Double.parseDouble(next());
     }
 
-    public String next() throws IOException {
-        if (index == size) {
-            init();
+    public String nextLine() {
+        String str = "";
+        try {
+            str = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return line[index++];
+        return str;
     }
 
-    public String nextLine() throws IOException {
-        if (index == size) {
-            init();
-        }
-        StringBuilder sb = new StringBuilder();
-        for (; index < size; index++) {
-            sb.append(line[index]).append(" ");
-        }
-        return sb.toString();
-    }
-
-    private int[] nextIntArray(int n) throws IOException {
+    public int[] nextIntArray(int n) {
         int[] tab = new int[n];
         for (int i = 0; i < tab.length; i++) {
             tab[i] = nextInt();
@@ -79,7 +52,7 @@ public class FastScanner {
         return tab;
     }
 
-    private long[] nextLongArray(int n) throws IOException {
+    public long[] nextLongArray(int n) {
         long[] tab = new long[n];
         for (int i = 0; i < tab.length; i++) {
             tab[i] = nextLong();
@@ -87,7 +60,7 @@ public class FastScanner {
         return tab;
     }
 
-    private double[] nextDoubleArray(int n) throws IOException {
+    public double[] nextDoubleArray(int n) {
         double[] tab = new double[n];
         for (int i = 0; i < tab.length; i++) {
             tab[i] = nextDouble();
