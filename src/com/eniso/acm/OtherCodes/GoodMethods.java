@@ -5,6 +5,34 @@ import java.util.List;
 
 public class GoodMethods {
 
+    public static long pow(long a, int b, long mod) {
+        long result = 1;
+        while (b > 0) {
+            if (b % 2 != 0) {
+                result *= a;
+                result %= mod;
+                b--;
+            }
+            a *= a;
+            a %= mod;
+            b /= 2;
+        }
+        return result % mod;
+    }
+
+    public static long cnk(long n, long k) {
+        long res = 1;
+        // Since C(n, k) = C(n, n-k)
+        if (k > n - k)
+            k = n - k;
+        // Calculate value of [n * (n-1) *---* (n-k+1)] / [k * (k-1) *----* 1]
+        for (int i = 0; i < k; ++i) {
+            res *= (n - i);
+            res /= (i + 1);
+        }
+        return res;
+    }
+
     public static int upper_bound(int[] tab, int l, int h, long x) {
         while (l < h) {
             int mid = (l + h) / 2;
