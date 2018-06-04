@@ -1,3 +1,7 @@
+package com.eniso.acm.OtherCodes;
+
+import java.io.*;
+import java.util.*;
 
 public class CycleTreePath {
 
@@ -319,7 +323,7 @@ public class CycleTreePath {
 
     }
 
-    public void solve(int testNumber, FastScanner in, OutputWriter out) {
+    public void solve(int testNumber, FastScanner in, PrintWriter out) {
         int t = in.nextInt();
         for (int j = 0; j < t; j++) {
             long[] nm = in.nextLongArray(2);

@@ -1,6 +1,13 @@
+package com.eniso.acm.Graphs;
+
+import java.io.*;
+import java.util.*;
+import com.eniso.acm.OtherCodes.FastScanner;
+
 public class LCAtoRMQ {
 
     static class Edge {
+
         int u;
         long a, b;
 
@@ -37,9 +44,10 @@ public class LCAtoRMQ {
     void precomputeSparseMatrix(int n) {
         for (int i = 1; i < level; i++) {
             for (int node = 1; node <= n; node++) {
-                if (parent[node][i - 1] != -1)
-                    parent[node][i] =
-                            parent[parent[node][i - 1]][i - 1];
+                if (parent[node][i - 1] != -1) {
+                    parent[node][i]
+                            = parent[parent[node][i - 1]][i - 1];
+                }
             }
         }
     }
@@ -47,7 +55,6 @@ public class LCAtoRMQ {
     int swap(int a, int b) {
         return a;
     }
-
 
     int LCA(int u, int v) {
         if (depth[v] < depth[u]) {
@@ -80,13 +87,13 @@ public class LCAtoRMQ {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
         FastScanner in = new FastScanner(inputStream);
-        OutputWriter out = new OutputWriter(outputStream);
+        PrintWriter out = new PrintWriter(outputStream);
         LCAtoRMQ solver = new LCAtoRMQ();
         solver.solve(1, in, out);
         out.close();
     }
 
-    public void solve(int testNumber, FastScanner in, OutputWriter out) {
+    public void solve(int testNumber, FastScanner in, PrintWriter out) {
         int t = in.nextInt();
         for (int i = 0; i < t; i++) {
             int n = in.nextInt();

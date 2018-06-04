@@ -1,5 +1,6 @@
 package com.eniso.acm;
 
+import com.eniso.acm.OtherCodes.GoodMethods;
 import java.io.*;
 import java.util.*;
 
