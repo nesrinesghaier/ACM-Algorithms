@@ -1,123 +1,50 @@
 package com.eniso.acm.OtherCodes;
 
-import java.io.DataInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class FastScanner {
-
-    final private int BUFFER_SIZE = 1 << 16;
-    private DataInputStream din;
-    private byte[] buffer;
-    private int bufferPointer, bytesRead;
+    BufferedReader br;
+    StringTokenizer st;
 
     public FastScanner(InputStream inputStream) {
-        din = new DataInputStream(inputStream);
-        buffer = new byte[BUFFER_SIZE];
-        bufferPointer = bytesRead = 0;
+        br = new BufferedReader(new InputStreamReader(inputStream));
     }
 
-    public String nextLine() {
-        byte[] buf = new byte[64];
-        int cnt = 0, c;
-        while ((c = read()) != -1) {
-            if (c == '\n') {
-                break;
+    public String next() {
+        while (st == null || !st.hasMoreElements()) {
+            try {
+                st = new StringTokenizer(br.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            buf[cnt++] = (byte) c;
         }
-        return new String(buf, 0, cnt);
+        return st.nextToken();
     }
 
     public int nextInt() {
-        int ret = 0;
-        byte c = read();
-        while (c <= ' ') {
-            c = read();
-        }
-        boolean neg = (c == '-');
-        if (neg) {
-            c = read();
-        }
-        do {
-            ret = ret * 10 + c - '0';
-        } while ((c = read()) >= '0' && c <= '9');
-
-        if (neg) {
-            return -ret;
-        }
-        return ret;
+        return Integer.parseInt(next());
     }
 
     public long nextLong() {
-        long ret = 0;
-        byte c = read();
-        while (c <= ' ') {
-            c = read();
-        }
-        boolean neg = (c == '-');
-        if (neg) {
-            c = read();
-        }
-        do {
-            ret = ret * 10 + c - '0';
-        } while ((c = read()) >= '0' && c <= '9');
-        if (neg) {
-            return -ret;
-        }
-        return ret;
+        return Long.parseLong(next());
     }
 
     public double nextDouble() {
-        double ret = 0, div = 1;
-        byte c = read();
-        while (c <= ' ') {
-            c = read();
-        }
-        boolean neg = (c == '-');
-        if (neg) {
-            c = read();
-        }
-
-        do {
-            ret = ret * 10 + c - '0';
-        } while ((c = read()) >= '0' && c <= '9');
-
-        if (c == '.') {
-            while ((c = read()) >= '0' && c <= '9') {
-                ret += (c - '0') / (div *= 10);
-            }
-        }
-
-        if (neg) {
-            return -ret;
-        }
-        return ret;
+        return Double.parseDouble(next());
     }
 
-    private void fillBuffer() {
+    public String nextLine() {
+        String str = "";
         try {
-            bytesRead = din.read(buffer, bufferPointer = 0, BUFFER_SIZE);
+            str = br.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (bytesRead == -1) {
-            buffer[0] = -1;
-        }
-    }
-
-    private byte read() {
-        if (bufferPointer == bytesRead) {
-            fillBuffer();
-        }
-        return buffer[bufferPointer++];
-    }
-
-    public void close() throws IOException {
-        if (din == null) {
-            return;
-        }
-        din.close();
+        return str;
     }
 
     public int[] nextIntArray(int n) {
@@ -125,7 +52,7 @@ public class FastScanner {
         for (int i = 0; i < n; i++) {
             tab[i] = nextInt();
         }
-        return tab;        
+        return tab;
     }
 
     public long[] nextLongArray(int n) {
@@ -133,6 +60,6 @@ public class FastScanner {
         for (int i = 0; i < n; i++) {
             tab[i] = nextLong();
         }
-        return tab;        
+        return tab;
     }
 }
