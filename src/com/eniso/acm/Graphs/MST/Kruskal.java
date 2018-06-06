@@ -1,4 +1,4 @@
-package com.eniso.acm.Graphs.mst;
+package com.eniso.acm.Graphs.MST;
 
 import com.eniso.acm.OtherCodes.UnionFind;
 

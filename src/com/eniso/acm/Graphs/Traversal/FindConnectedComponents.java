@@ -1,24 +1,24 @@
-package com.eniso.acm.Graphs;
+package com.eniso.acm.Graphs.Traversal;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
 
-public class DFS {
+public class FindConnectedComponents {
 
     public static int n;
     private static boolean[] visited = new boolean[100000];
     private static ArrayList<Integer>[] AdjList = new ArrayList[100000];
 
-    private static String dfs(int u) {
-        StringBuilder ch = new StringBuilder(u + "");
+    private static void dfs(int u) {
         visited[u] = true;
         for (int i = 0; i < AdjList[u].size(); i++) {
             int v = AdjList[u].get(i);
             if (!visited[v]) {
-                ch.append(" ").append(dfs(v));
+                dfs(v);
             }
         }
-        return ch.toString();
     }
 
     public static void main(String[] args) {
@@ -44,9 +44,11 @@ public class DFS {
         int numCC = 0;
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                out.println("CC " + ++numCC + ": " + dfs(i));
+                ++numCC;
+                dfs(i);
             }
         }
+        out.println(numCC);
         out.close();
     }
 }

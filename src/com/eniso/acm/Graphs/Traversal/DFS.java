@@ -1,14 +1,13 @@
-package com.eniso.acm.Graphs;
+package com.eniso.acm.Graphs.Traversal;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class TopologicalSort {
+public class DFS {
 
     public static int n;
     private static boolean[] visited = new boolean[100000];
     private static ArrayList<Integer>[] AdjList = new ArrayList[100000];
-    private static ArrayList<Integer> ts = new ArrayList();
 
     private static String dfs(int u) {
         StringBuilder ch = new StringBuilder(u + "");
@@ -19,7 +18,6 @@ public class TopologicalSort {
                 ch.append(" ").append(dfs(v));
             }
         }
-        ts.add(u);
         return ch.toString();
     }
 
@@ -39,8 +37,8 @@ public class TopologicalSort {
         AdjList[3].add(2);
         AdjList[3].add(4);
         AdjList[4].add(3);
-        AdjList[6].add(8);
         AdjList[6].add(7);
+        AdjList[6].add(8);
         AdjList[7].add(6);
         AdjList[8].add(6);
         int numCC = 0;
@@ -49,10 +47,6 @@ public class TopologicalSort {
                 out.println("CC " + ++numCC + ": " + dfs(i));
             }
         }
-        for (int i = 0; i < n; i++) {
-            out.print(ts.get(ts.size()-i-1)+" ");
-        }
-        out.println();
         out.close();
     }
 }

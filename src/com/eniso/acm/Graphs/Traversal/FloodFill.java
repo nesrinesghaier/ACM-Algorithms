@@ -1,4 +1,4 @@
-package com.eniso.acm.Graphs;
+package com.eniso.acm.Graphs.Traversal;
 
 import java.io.PrintWriter;
 
