@@ -1,4 +1,4 @@
-package com.eniso.acm.Graphs.SpecialGraphs.ConvertGraphToDAG;
+package com.eniso.acm.Graphs.SpecialGraphs.DAG;
 
 import static java.lang.System.out;
 import java.util.ArrayList;

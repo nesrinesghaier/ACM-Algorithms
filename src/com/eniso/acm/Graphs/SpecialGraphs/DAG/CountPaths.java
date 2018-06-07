@@ -1,4 +1,4 @@
-package com.eniso.acm.Graphs.SpecialGraphs;
+package com.eniso.acm.Graphs.SpecialGraphs.DAG;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
