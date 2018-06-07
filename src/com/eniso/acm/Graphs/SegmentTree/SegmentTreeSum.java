@@ -1,4 +1,4 @@
-package com.eniso.acm.SegmentTree;
+package com.eniso.acm.Graphs.SegmentTree;
 
 
 public class SegmentTreeSum {
