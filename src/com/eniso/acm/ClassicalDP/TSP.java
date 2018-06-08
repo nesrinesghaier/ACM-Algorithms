@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class TSP {
 
-    public static int n;
+    public static int n;// <=16 (~17M)
     private static int[][] dist;
 
     private static int tsp(int i, int mask) {
